@@ -1,6 +1,7 @@
-const	{ useState, useEffect, useRef } = React;
+import { useState, useEffect, useRef } from 'react'
+import './App.css'
 
-function CandyApp() {
+function App() {
 	const	[candies, setCandies] = useState([]);
 	const	[carouselImages, setCarouselImages] = useState([]);
 
@@ -252,12 +253,12 @@ function CandyApp() {
 	};
 
 	useEffect(() => {
-		fetch("/candies")
+		fetch("http://localhost:8000/candies")
 			.then((res) => res.json())
 			.then((data) => {
 				setCandies(data);
 			});
-		fetch("/carousel")
+		fetch("http://localhost:8000/carousel")
 			.then((res) => res.json())
 			.then((data) => {
 				setCarouselImages(data);
@@ -318,5 +319,4 @@ function CandyApp() {
 	);
 }
 
-const	root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<CandyApp />);
+export default App
